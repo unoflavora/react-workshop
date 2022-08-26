@@ -19,7 +19,7 @@
 - Clone the repo to your local
 
 ```bash
-$ git clone git@github.com:mazipan/react-workshop.git
+$ git clone git@github.com:dendi-toped/react-workshop.git
 ```
 
 ## Installation
