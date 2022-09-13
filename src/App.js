@@ -1,12 +1,15 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Home from './Home';
-import './App.css';
+/* eslint-disable react/jsx-props-no-spreading */
+import { useId } from "react";
 
-const App = () => (
-  <Switch>
-    <Route exact path="/" component={Home} />
-  </Switch>
-);
+const withId = (Component) => {
+  return (props) => {
+    const id = useId();
+    return <Component {...props} uniqueID={id} />;
+  };
+};
 
-export default App;
+const App = ({ uniqueID }) => {
+  return <p>{uniqueID}</p>;
+};
+
+export default withId(App);
