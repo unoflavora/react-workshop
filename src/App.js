@@ -1,12 +1,14 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Home from './Home';
-import './App.css';
+import ClassComponent from './ClassComponent';
+import FunctionalComponent from './FunctionalComponent';
 
-const App = () => (
-  <Switch>
-    <Route exact path="/" component={Home} />
-  </Switch>
-);
+
+const App = () => {
+  return (
+    <>
+      <FunctionalComponent />
+      <ClassComponent />
+    </>
+  );
+};
 
 export default App;
