@@ -43,9 +43,13 @@ const ChildComponent = () => {
 
 const App = () => {
   return (
-    <ErrorBoundary>
-      <ChildComponent />
-    </ErrorBoundary>
+    <>
+      <p>hello world</p>
+      <ErrorBoundary>
+        <ChildComponent />
+      </ErrorBoundary>
+    </>
+
   )
 }
 
