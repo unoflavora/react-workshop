@@ -1,12 +1,19 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Home from './Home';
-import './App.css';
+import {useRef } from 'react';
 
-const App = () => (
-  <Switch>
-    <Route exact path="/" component={Home} />
-  </Switch>
-);
+const App = () => {
+  const refVal = useRef();
+  return (
+    <>
+      <form>
+        <input type="text" ref={refVal} />
+      </form>
+      <button type='button' onClick={() => {
+        alert(refVal.current.value)
+      }}>
+        click
+      </button>
+    </>
+  )
+}
 
-export default App;
+export default App
