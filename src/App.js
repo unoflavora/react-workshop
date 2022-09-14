@@ -1,17 +1,16 @@
-import {useRef } from 'react';
+import { useState } from 'react';
 
 const App = () => {
-  const refVal = useRef();
+  const [textInput, setTextInput] = useState('')
+
   return (
     <>
       <form>
-        <input type="text" ref={refVal} />
+        <input type="text" onChange={e => {
+          setTextInput(e.target.value)
+        }} />
       </form>
-      <button type='button' onClick={() => {
-        alert(refVal.current.value)
-      }}>
-        click
-      </button>
+      <p>{textInput}</p>
     </>
   )
 }
