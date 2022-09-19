@@ -14,5 +14,6 @@ module.exports = {
     'react/no-danger': 0,
     'react/react-in-jsx-scope': 0,
     'react/forbid-prop-types': 0,
+    'import/prefer-default-export': 0,
   },
 };
