@@ -1,6 +1,36 @@
 import { useState } from 'react'
 import { Button, TextField } from '@material-ui/core';
 
+
+// ==== Styles ====
+const styContainer = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    fontFamily: 'Roboto, sans-serif'
+}
+
+const styButton = {
+    marginLeft: 10,
+    marginRight: 10,
+}
+
+const styHeader = {
+    color: '#3f51b5',
+}
+
+
+// ==== Helpers ====
+
+const getTaskIndex = (todos, id) => {
+    return todos.findIndex(todo => todo.id === id);
+}
+
+
+// ==== Component ====
+
 const Todo = () => {
     const [todos, setTodos] = useState([])
     const [task, setTask] = useState('')
@@ -24,7 +54,7 @@ const Todo = () => {
     };
 
     const editTodo = object => {
-        const i = todos.findIndex(todo => todo.id === object.id);
+        const i = getTaskIndex(todos, object.id)
         todos[i].is_editing = !todos[i].is_editing;
 
         todos.map(todo => {
@@ -43,7 +73,7 @@ const Todo = () => {
     };
 
     const saveEditTask = object => {
-        const i = todos.findIndex(todo => todo.id === object.id);
+        const i = getTaskIndex(todos, object.id)
         todos[i].name = editedTask;
 
         setTodos([...todos])
@@ -55,22 +85,22 @@ const Todo = () => {
     };
 
     const deleteTodo = object => {
-        const i = todos.findIndex(todo => todo.id === object.id);
+        const i = getTaskIndex(todos, object.id)
         todos.splice(i, 1);
         setTodos([...todos])
     };
 
     const doneTodo = object => {
-        const i = todos.findIndex(todo => todo.id === object.id);
+        const i = getTaskIndex(todos, object.id)
         todos[i].is_done = true;
 
         setTodos([...todos])
     };
 
     return (
-        <div>
+        <div style={styContainer}>
             <div>
-                <h2>ToDo List</h2>
+                <h2 style={styHeader}>ToDo List</h2>
             </div>
 
             <div>
@@ -82,7 +112,7 @@ const Todo = () => {
                     placeholder="Add TO DO"
                 />
                 <Button
-                    className="button_style"
+                    style={styButton}
                     variant="contained"
                     color="primary"
                     size="small"
@@ -95,7 +125,7 @@ const Todo = () => {
 
             {todos.length > 0
                 ? <div>
-                    <table className="centerTable" style={{ marginTop: 20 }}>
+                    <table style={{ marginTop: 20 }}>
                         <thead>
                             <tr>
                                 <th>Task</th>
@@ -121,7 +151,7 @@ const Todo = () => {
                                             {object.is_editing
                                                 ? <div>
                                                     <Button
-                                                        className="button_style"
+                                                        style={styButton}
                                                         variant="outlined"
                                                         color="primary"
                                                         size="small"
@@ -131,7 +161,7 @@ const Todo = () => {
                                                         Save
                                                     </Button>
                                                     <Button
-                                                        className="button_style"
+                                                        style={styButton}
                                                         variant="outlined"
                                                         color=""
                                                         size="small"
@@ -142,7 +172,7 @@ const Todo = () => {
                                                 </div>
                                                 : <div>
                                                     <Button
-                                                        className="button_style"
+                                                        style={styButton}
                                                         variant="outlined"
                                                         color="primary"
                                                         size="small"
@@ -151,7 +181,7 @@ const Todo = () => {
                                                         Edit
                                                     </Button>
                                                     <Button
-                                                        className="button_style"
+                                                        style={styButton}
                                                         variant="outlined"
                                                         color="secondary"
                                                         size="small"
@@ -161,7 +191,7 @@ const Todo = () => {
                                                         Done
                                                     </Button>
                                                     <Button
-                                                        className="button_style"
+                                                        style={styButton}
                                                         variant="outlined"
                                                         size="small"
                                                         onClick={() => deleteTodo(object)}
