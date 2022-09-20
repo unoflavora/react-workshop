@@ -14,21 +14,15 @@ function reducer(state, action) {
   }
 }
 
-const ContextValue = createContext(0);
-const ContextDispatch = createContext();
-
+const Context = createContext();
 // eslint-disable-next-line react/prop-types
 const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  return (
-    <ContextDispatch.Provider value={dispatch}>
-      <ContextValue.Provider value={state}>{children}</ContextValue.Provider>
-    </ContextDispatch.Provider>
-  );
+  return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>;
 };
 
 const Child1 = () => {
-  const dispatch = useContext(ContextDispatch);
+  const { dispatch } = useContext(Context);
   console.log('render button');
   return (
     <div style={{ width: '100%' }}>
@@ -47,9 +41,9 @@ const Child1 = () => {
 };
 
 const Child2 = () => {
-  const { count } = useContext(ContextValue);
+  const { state } = useContext(Context);
   console.log('render child 2');
-  return <p>{count}</p>;
+  return <p>{state.count}</p>;
 };
 const App = () => {
   return (
