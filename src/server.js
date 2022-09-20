@@ -3,11 +3,14 @@ import App from './App';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
+import { ServerStyleSheet } from 'styled-components';
 import express from 'express';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { getDataFromTree } from '@apollo/client/react/ssr';
 
 const razzleAssets = require(process.env.RAZZLE_ASSETS_MANIFEST);
+
+const sheet = new ServerStyleSheet();
 
 const cssLinksFromAssets = (assets, entrypoint) => {
   return assets[entrypoint]
@@ -55,24 +58,26 @@ server
         const initialState = apolloClient.extract();
 
         const html = renderToString(
-          <html lang="en">
-            <head>
-              <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-              <meta charset="utf-8" />
-              <title>Welcome to Razzle</title>
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-              {cssLinksFromAssets(razzleAssets, 'client')}
-            </head>
-            <body>
-              <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `window.__APOLLO_STATE__=${JSON.stringify(initialState).replace(/</g, '\\u003c')};`,
-                }}
-              />
-              {jsScriptTagsFromAssets(razzleAssets, 'client')}
-            </body>
-          </html>,
+          sheet.collectStyles(
+            <html lang="en">
+              <head>
+                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+                <meta charset="utf-8" />
+                <title>Welcome to Razzle</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                {cssLinksFromAssets(razzleAssets, 'client')}
+              </head>
+              <body>
+                <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `window.__APOLLO_STATE__=${JSON.stringify(initialState).replace(/</g, '\\u003c')};`,
+                  }}
+                />
+                {jsScriptTagsFromAssets(razzleAssets, 'client')}
+              </body>
+            </html>,
+          ),
         );
 
         res.status(200).header('Content-Type', 'text/html').send(`<!doctype html>\n${html}`);
