@@ -3,7 +3,8 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ['airbnb', 'prettier'],
+  parser: "babel-eslint",
+  extends: ['prettier', 'eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended'],
   rules: {
     'import/order': 0,
     'import/no-dynamic-require': 0,
