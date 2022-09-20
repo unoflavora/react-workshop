@@ -102,6 +102,7 @@ const Todo = () => {
   }
 
   return (
+    <div className='todo'>
     <Container>
       <Heading>
         <h1>To-Do List</h1>
@@ -131,6 +132,7 @@ const Todo = () => {
         </ul>
       </div>
     </Container>
+    </div>
   );
 };
 
