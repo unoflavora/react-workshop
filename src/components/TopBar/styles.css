@@ -1,12 +1,12 @@
 .header {
-  background-color: #371351;
-  color: #ffff;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   padding: 10px;
+  width: 100%;
+  background: white;
+  position: fixed;
+  box-shadow: 1px 1px 3px #b5bbc5;
 }
-
 .header-logo {
   height: 40px;
   width: auto;

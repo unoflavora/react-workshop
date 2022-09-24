@@ -9,8 +9,10 @@ const Layout = (props) => {
   return (
     <main className="layout">
       <TopBar />
-      {children}
-      <Footer />
+      <section>
+        {children}
+        <Footer />
+      </section>
     </main>
   );
 };

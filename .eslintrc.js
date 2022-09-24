@@ -17,5 +17,6 @@ module.exports = {
     'no-underscore-dangle': 0,
     'react/no-danger': 0,
     'react/forbid-prop-types': 0,
+    '@typescript-eslint/no-var-requires': 0,
   },
 };
