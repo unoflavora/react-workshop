@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import loadable from '@loadable/component';
 
@@ -16,16 +16,14 @@ const CodeSplittingIO = loadable(() => import(/* webpackChunkName: "code-splitti
 import './App.css';
 
 const App = () => (
-  <Suspense fallback={<div>Loading...</div>}>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/todo" component={Todo} />
-      <Route exact path="/blog" component={Blog} />
-      <Route exact path="/code-splitting" component={CodeSplitting} />
-      <Route exact path="/code-splitting-io" component={CodeSplittingIO} />
-      <Route exact path="/io" component={IntersectionObserver} />
-    </Switch>
-  </Suspense>
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route exact path="/todo" component={Todo} />
+    <Route exact path="/blog" component={Blog} />
+    <Route exact path="/code-splitting" component={CodeSplitting} />
+    <Route exact path="/code-splitting-io" component={CodeSplittingIO} />
+    <Route exact path="/io" component={IntersectionObserver} />
+  </Switch>
 );
 
 export default App;
