@@ -1,4 +1,3 @@
-import { lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import loadable from '@loadable/component';
 
@@ -8,8 +7,7 @@ import Todo from './Todo';
 import Blog from './Blog';
 import IntersectionObserver from './IntersectionObserver';
 
-const CodeSplitting = lazy(() => import(/* webpackChunkName: 'code-splitting'*/ './CodeSplitting'));
-// const CodeSplittingIO = lazy(() => import(/* webpackChunkName: 'code-splitting'*/ './CodeSplittingIO'));
+const CodeSplitting = loadable(() => import(/* webpackChunkName: 'code-splitting'*/ './CodeSplitting'));
 
 const CodeSplittingIO = loadable(() => import(/* webpackChunkName: "code-splitting-io" */ './CodeSplittingIO'));
 
