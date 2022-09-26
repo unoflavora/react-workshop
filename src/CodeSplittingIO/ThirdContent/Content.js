@@ -5,8 +5,8 @@ const ThirdContentComp = ({ imageProps = {} }) => {
 
   return (
     <div>
-      <img {...img3Props} loading="lazy"/>
-      <h1>Third Title</h1>
+      <img {...img3Props}/>
+      <h1>Third Content</h1>
     </div>
   );
 };

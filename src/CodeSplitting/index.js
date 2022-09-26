@@ -1,8 +1,10 @@
-import { lazy } from 'react';
-
 import { Container } from './index.styles';
 
-const SecondContent = lazy(() => import(/* webpackChunkName: 'code-splitting-second-content'*/ './SecondContent'));
+import loadable from '@loadable/component';
+
+const SecondContent = loadable(() =>
+  import(/* webpackChunkName: "code-splitting-second-content" */ './SecondContent'),
+);
 
 const CodeSplitting = () => {
   return (

@@ -11,9 +11,7 @@ import IntersectionObserver from './IntersectionObserver';
 const CodeSplitting = lazy(() => import(/* webpackChunkName: 'code-splitting'*/ './CodeSplitting'));
 // const CodeSplittingIO = lazy(() => import(/* webpackChunkName: 'code-splitting'*/ './CodeSplittingIO'));
 
-const CodeSplittingIO = loadable(() =>
-  import(/* webpackChunkName: "code-splitting-io" */ './CodeSplittingIO'),
-);
+const CodeSplittingIO = loadable(() => import(/* webpackChunkName: "code-splitting-io" */ './CodeSplittingIO'));
 
 import './App.css';
 

@@ -50,8 +50,6 @@ const Blog = () => {
           <MoreContainer>
             <BlogContent />
             <BlogContent />
-            <BlogContent />
-            <BlogContent />
           </MoreContainer>
         </div>
       </Container>
