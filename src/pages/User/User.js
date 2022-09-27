@@ -1,16 +1,24 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useSWR from 'swr';
+
+const API = 'https://jsonplaceholder.typicode.com/posts/1';
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function UserPage() {
   const [loading, setLoading] = useState({});
   const [postData, setPostData] = useState(null);
 
-  // native fetch
+  // FETCH API USING SWR
+  const { data, error } = useSWR(API, fetcher);
+  console.log('=> FETCHER SWR', { data, error });
+
   useEffect(() => {
     setLoading(true);
     try {
-      fetch('https://jsonplaceholder.typicode.com/posts/1')
+      // NATIVE FETCH
+      fetch(API)
         .then((response) => response.json())
         .then((json) => setPostData(json));
     } catch (e) {
