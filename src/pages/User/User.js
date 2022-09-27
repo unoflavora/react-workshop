@@ -17,7 +17,6 @@ function UserPage() {
   useEffect(() => {
     setLoading(true);
     try {
-      // NATIVE FETCH
       fetch(API)
         .then((response) => response.json())
         .then((json) => setPostData(json));
