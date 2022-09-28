@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import useSWR from 'swr';
+import useSWR from 'swr';
 
 const API = 'https://jsonplaceholder.typicode.com/posts/1';
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -11,7 +11,7 @@ function UserPage() {
   const [postData, setPostData] = useState(null);
 
   // FETCH API USING SWR
-  const { data, error } = {};
+  const { data, error } = useSWR(API, fetcher);
   console.log('=> FETCHER SWR', { data, error });
 
   useEffect(() => {

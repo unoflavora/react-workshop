@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Link } from 'react-router-dom';
+import { styContainer, styCard, styImage, styWrapper } from './styles';
 
 const GET_POKEMON_LIST = gql`
   query GetPokemonList($limit: Int) {
@@ -17,20 +18,33 @@ const GET_POKEMON_LIST = gql`
 `;
 
 function PokemonPage() {
-  const { loading, data } = useQuery(GET_POKEMON_LIST, {
+  const { loading, data = {} } = useQuery(GET_POKEMON_LIST, {
     variables: {
-      limit: 2,
+      limit: 10,
     },
+    fetchPolicy: 'network-only',
   });
 
+  const pokemon = data.pokemons || {};
+  const pokemonList = pokemon.results || [];
+
   return (
-    <div style={{ padding: '32px', width: '100%' }}>
+    <div className={styContainer}>
       <h1>Pokemon Page</h1>
-      <p>{`Loading: ${loading}`}</p>
-      <div>
-        <p>API Result: </p>
-        <code>{JSON.stringify(data)}</code>
-      </div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className={styWrapper}>
+          {pokemonList.map((item) => {
+            return (
+              <div className={styCard} key={item.id}>
+                <img className={styImage} src={item.image} alt="" />
+                <p>{item.name}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div style={{ height: '16px' }} />
       <Link to="/">Back to Homepage</Link>
     </div>
