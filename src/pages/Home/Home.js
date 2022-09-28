@@ -18,7 +18,7 @@ function Home() {
           <Link to="/user">Users</Link>
         </li>
         <li>
-          <Link to="/phone">Phonebook</Link>
+          <Link to="/phone">PokemonList</Link>
         </li>
       </ul>
     </div>

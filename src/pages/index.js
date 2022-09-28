@@ -3,13 +3,13 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from './Home';
 import User from './User';
-import PhoneBook from './PhoneBook';
+import PokemonList from './PokemonList';
 import Error404 from './404';
 
 const PageIndex = () => (
   <Switch>
     <Route exact path="/user" component={User} />
-    <Route exact path="/phone" component={PhoneBook} />
+    <Route exact path="/phone" component={PokemonList} />
     <Route exact path="/" component={Home} />
     <Route component={Error404} />
   </Switch>
