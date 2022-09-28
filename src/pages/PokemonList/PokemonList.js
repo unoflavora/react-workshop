@@ -1,7 +1,8 @@
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { styContainer, styCard, styImage, styWrapper } from './styles';
+import { useQuery, gql } from '@apollo/client';
+import { Button, Card, notification } from 'antd';
+import { styContainer, styImage, styWrapper } from './styles';
 
 const GET_POKEMON_LIST = gql`
   query GetPokemonList($limit: Int) {
@@ -28,6 +29,14 @@ function PokemonPage() {
   const pokemon = data.pokemons || {};
   const pokemonList = pokemon.results || [];
 
+  const handleOpenNotif = (name) => {
+    notification.open({
+      message: `You Clicked ${name}`,
+      description: '',
+      type: 'success'
+    });
+  };
+
   return (
     <div className={styContainer}>
       <h1>Pokemon Page</h1>
@@ -37,16 +46,17 @@ function PokemonPage() {
         <div className={styWrapper}>
           {pokemonList.map((item) => {
             return (
-              <div className={styCard} key={item.id}>
+              <Card title={item.name} key={item.id} onClick={() => handleOpenNotif(item.name)}>
                 <img className={styImage} src={item.image} alt="" />
-                <p>{item.name}</p>
-              </div>
+              </Card>
             );
           })}
         </div>
       )}
       <div style={{ height: '16px' }} />
-      <Link to="/">Back to Homepage</Link>
+      <Link to="/">
+        <Button type="primary">Back to Homepage</Button>
+      </Link>
     </div>
   );
 }
