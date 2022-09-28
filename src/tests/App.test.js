@@ -10,7 +10,6 @@ jest.mock('../assets/toped.png', () => ({ __esModule: true, default: 'toped.png'
 describe('Integration test for React Advance 1', () => {
   it('should run the application', () => {
     const { getByText, getByAltText } = render(<App />);
-
     expect(getByText('Hello! Welcome to Tokopedia DevCamp 2022')).toBeVisible();
     expect(getByText('Click For a Surprise')).toBeVisible();
     expect(getByAltText('toped')).toBeVisible();
