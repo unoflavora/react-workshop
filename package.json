@@ -6,6 +6,7 @@
   "version": "4.0.4",
   "license": "MIT",
   "scripts": {
+    "build": "webpack --mode production --config ./config/webpack.config.js",
     "test": "jest"
   },
   "dependencies": {
