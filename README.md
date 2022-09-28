@@ -1,57 +1,19 @@
-# react-workshop
-
-⚛️ A workshop to get started with React
-
-## Scope of workshop
-
-- React 101 + Graphql
-- Web Performance
-- SEO for web developer
-
-## Tech stacks
-
-- Boilerplate using [Razzle](https://razzlejs.org/getting-started)
-- React.js
-- Apollo
-
-## Checkout
-
-- Clone the repo to your local
-
+# React Advance I
+> Building a Platform
+## Quick Start
+### Install dependencies
 ```bash
-$ git clone git@github.com:dendi-toped/react-workshop.git
+$ npm install
 ```
 
-## Installation
-
-- Move to the project's directory
-
+### Build Application
 ```bash
-$ cd react-workshop
+$ npm run build
 ```
 
-- Install dependency
-
-```bash
-$ npm i
-```
-
-- Run the project
-
+### Run Development Environment
 ```bash
 $ npm run dev
 ```
 
-Open in `http://localhost:3000/`
-
-## Commands
-
-| Command         | Description                                        |
-| --------------- | -------------------------------------------------- |
-| `npm run dev`   | Run development mode with HMR                      |
-| `npm run build` | Build the project for production deployment        |
-| `npm run prod`  | Run the project after build, to replicate prod env |
-
----
-
-© 2021 from 🇮🇩
+And Open in `http://localhost:3000/`

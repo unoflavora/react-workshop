@@ -2,7 +2,9 @@ module.exports = {
   env: {
     browser: true,
     node: true,
+    jest: true,
   },
+  plugins: ['jest'],
   extends: ['airbnb', 'prettier'],
   rules: {
     'import/order': 0,

@@ -1,0 +1,81 @@
+.screen {
+  font-family: 'Roboto', sans-serif;
+
+  margin: auto;
+  max-width: 600px;
+}
+
+.container {
+  display: flex;
+  padding: 0 24px;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.image {
+  width: 150px;
+}
+
+.image img {
+  width: 100%;
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.button {
+  padding: 6px 16px;
+  border-width: 0;
+  position: relative;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+  overflow: hidden;
+  background-color: #03ac0e;
+  color: #ecf0f1;
+
+  transition: background-color 0.3s;
+}
+
+.button:focus {
+  background-color: #12883d;
+}
+
+.button:before {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, 0.3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.button:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+}
+
+.button:disabled {
+  background-color: #12883d;
+}
