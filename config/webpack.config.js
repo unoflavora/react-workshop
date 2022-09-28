@@ -1,7 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const root = process.cwd();
+const isDev = process.env.NODE_ENV === 'development';
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -32,9 +34,13 @@ module.exports = {
     ],
   },
   plugins: [
+    isDev ? new ReactRefreshWebpackPlugin() : null,
     new HtmlWebpackPlugin({
       favicon: path.resolve(root, 'public', 'favicon.ico'),
       template: path.resolve(root, 'public', 'index.html'),
     }),
-  ],
+  ].filter(Boolean),
+  devServer: {
+    hot: true,
+  },
 };
