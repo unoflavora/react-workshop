@@ -17,8 +17,8 @@ function Home() {
         <Typography style={{ color: 'white' }}>Welcome React Workshop - DevCamp 2022</Typography>
       </div>
       <div style={{ padding: '16px' }}>
-        <Card title="Pokemon From Reducer">
-          <Typography>{pokemonValue.name}</Typography>
+        <Card title="Your Pokemon">
+          <Typography>{pokemonValue.name || 'You still not choose any of them'}</Typography>
           <Image src={pokemonValue.image} />
         </Card>
       </div>

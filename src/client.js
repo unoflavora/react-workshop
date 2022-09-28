@@ -14,11 +14,9 @@ const client = new ApolloClient({
 
 hydrate(
   <ApolloProvider client={client}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </ApolloProvider>,
   document.getElementById('root'),
 );
