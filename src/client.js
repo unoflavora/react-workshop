@@ -6,7 +6,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
-  uri: 'https://asia-southeast2-minitokopedia.cloudfunctions.net/graphql',
+  uri: 'https://graphql-pokeapi.graphcdn.app/',
 });
 
 hydrate(

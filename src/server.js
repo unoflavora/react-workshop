@@ -35,7 +35,7 @@ server
       ssrMode: true,
       cache: new InMemoryCache(),
       link: createHttpLink({
-        uri: 'https://asia-southeast2-minitokopedia.cloudfunctions.net/graphql',
+        uri: 'https://graphql-pokeapi.graphcdn.app/',
       }),
     });
 
