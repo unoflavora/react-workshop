@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { Button, Card, notification } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { updatePokemon } from '../../reducers/pokemon.reducer';
 import { styContainer, styImage, styWrapper } from './styles';
 
 const GET_POKEMON_LIST = gql`
@@ -19,6 +22,11 @@ const GET_POKEMON_LIST = gql`
 `;
 
 function PokemonPage() {
+  const dispatch = useDispatch();
+  const pokemonValue = useSelector((state) => state.pokemon.value);
+
+  console.log('=> pokemonValue', pokemonValue)
+
   const { loading, data = {} } = useQuery(GET_POKEMON_LIST, {
     variables: {
       limit: 10,
@@ -29,11 +37,12 @@ function PokemonPage() {
   const pokemon = data.pokemons || {};
   const pokemonList = pokemon.results || [];
 
-  const handleOpenNotif = (name) => {
+  const handleOpenNotif = (item) => {
+    dispatch(updatePokemon(item));
     notification.open({
-      message: `You Clicked ${name}`,
+      message: `You Clicked ${item.name}`,
       description: '',
-      type: 'success'
+      type: 'success',
     });
   };
 
@@ -46,7 +55,7 @@ function PokemonPage() {
         <div className={styWrapper}>
           {pokemonList.map((item) => {
             return (
-              <Card title={item.name} key={item.id} onClick={() => handleOpenNotif(item.name)}>
+              <Card title={item.name} key={item.id} onClick={() => handleOpenNotif(item)}>
                 <img className={styImage} src={item.image} alt="" />
               </Card>
             );

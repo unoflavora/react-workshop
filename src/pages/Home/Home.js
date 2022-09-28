@@ -1,26 +1,37 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Button, Typography, Card, Image } from 'antd';
 import { Link } from 'react-router-dom';
+
 import logo from '../../assets/react.svg';
 import './Home.css';
 
 function Home() {
+  const pokemonValue = useSelector((state) => state.pokemon.value);
+
   return (
     <div className="Home">
       <div className="Home-header">
         <img src={logo} className="Home-logo" alt="logo" />
-        <h2>Welcome React Workshop</h2>
+        <Typography style={{ color: 'white', fontSize: '20px', marginTop: '16px' }}>Welcome React Workshop</Typography>
+        <Typography style={{ color: 'white' }}>Welcome React Workshop - DevCamp 2022</Typography>
       </div>
-      <p className="Home-intro">
-        To get started, edit <code>src/App.js</code> or <code>src/Home.js</code> and save to reload.
-      </p>
-      <ul className="Home-resources">
-        <li>
-          <Link to="/user">Users</Link>
-        </li>
-        <li>
-          <Link to="/phone">PokemonList</Link>
-        </li>
-      </ul>
+      <div style={{ padding: '16px' }}>
+        <Card title="Pokemon From Reducer">
+          <Typography>{pokemonValue.name}</Typography>
+          <Image src={pokemonValue.image} />
+        </Card>
+      </div>
+      <Link to="/user">
+        <Button type="primary" size="middle" style={{ margin: '8px' }}>
+          User
+        </Button>
+      </Link>
+      <Link to="/phone">
+        <Button type="primary" size="middle">
+          Pokemon List
+        </Button>
+      </Link>
     </div>
   );
 }
