@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const BundleSizeLimiter = require('./BundleSizeLimiter');
 
 const root = process.cwd();
 const isDev = process.env.NODE_ENV === 'development';
@@ -33,6 +34,7 @@ module.exports = {
   },
   plugins: [
     isDev ? new ReactRefreshWebpackPlugin() : null,
+    new BundleSizeLimiter({ limit: '30 KB' }),
     new HtmlWebpackPlugin({
       favicon: path.resolve(root, 'public', 'favicon.ico'),
       template: path.resolve(root, 'public', 'index.html'),
