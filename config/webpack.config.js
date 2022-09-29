@@ -18,9 +18,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: ['babel-loader', { loader: require.resolve('./my-loader'), options: { name: 'Shafiya' } }],
       },
       {
         test: /\.css$/,

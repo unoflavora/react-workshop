@@ -3,6 +3,9 @@
   "repository": {
     "type": "git"
   },
+  "author": {
+    "name": "Miqdad"
+  },
   "version": "4.0.4",
   "license": "MIT",
   "scripts": {
