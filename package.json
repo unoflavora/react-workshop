@@ -11,7 +11,8 @@
   "scripts": {
     "build": "webpack --mode production --config ./config/webpack.config.js",
     "dev": "NODE_ENV=development webpack serve --host 0.0.0.0 --port 3000 --config ./config/webpack.config.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ./src"
   },
   "dependencies": {
     "react": "^18.2.0",
