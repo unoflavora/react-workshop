@@ -18,6 +18,7 @@ const GET_POKEMON_LIST = gql`
 
 function PokemonPage() {
   const { loading, data } = useQuery(GET_POKEMON_LIST, {
+    fetchPolicy: 'network-only',
     variables: {
       limit: 2,
     },
